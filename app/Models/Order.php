@@ -8,4 +8,28 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'order_number',
+    ];
+
+    public function orderDescription()
+    {
+        return $this->hasMany(OrderDescription::class);
+    }
+
+    public function restaurant()
+    {
+        return $this->belongsTo(Restaurant::class);
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
+
+    public function table()
+    {
+        return $this->belongsTo(Table::class);
+    }
 }
